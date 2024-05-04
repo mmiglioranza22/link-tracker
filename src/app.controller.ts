@@ -32,7 +32,7 @@ export class AppController {
   }
 
   @Get('/l/:id')
-  @Redirect('', 301) //permenant
+  @Redirect('', 301)
   async redirectToTarget(@Param('id') id: string) {
     try {
       const redirectUrl = this.appService.redirect(id);

@@ -11,6 +11,7 @@ export class Link {
   private _id: string;
   private _expires?: Date | null;
   private _redirected: number;
+  private _password?: string;
 
   constructor(payload: CreateLinkDTO) {
     const linkId = shortLinkGenerator();
@@ -19,6 +20,7 @@ export class Link {
     this._link = 'http://localhost:8080/l/' + linkId;
     this._valid = true;
     this._redirected = 0;
+    this._password = payload.password;
   }
   @Expose()
   public get link() {
@@ -40,6 +42,9 @@ export class Link {
   }
   public get id() {
     return this._id;
+  }
+  public get password() {
+    return this._password;
   }
 
   public toggleValid() {

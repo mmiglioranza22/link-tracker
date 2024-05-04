@@ -23,7 +23,11 @@ export class DatabaseService {
   }
 
   static getTargetLink(linkId: string) {
-    return database[linkId].target;
+    if (database[linkId].password) {
+      return `${database[linkId].target}?password=${database[linkId].password}`;
+    } else {
+      return database[linkId].target;
+    }
   }
   static modifyRedirectStats(linkId: string) {
     database[linkId].increaseRedirected();
