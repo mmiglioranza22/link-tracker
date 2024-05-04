@@ -34,7 +34,7 @@ All data is persisted in memory, so killing the application will make it start w
 
 Links can be created with a `password` in the request body that will be attached as a query param for the redirected target url.
 
-Links can be created with a Date for them to expire in the `expires` request body prop. Expired links will not redirect to their target url, nor modify their stats, regardless or not them being valid. For `expires` use a propper JSON format (`2012-04-23T18:25:43.511Z`) and mind UTC difference.(-3)
+Links can be created with a Date for them to expire in the `expires` request body prop. Expired links will not redirect to their target url, nor modify their stats, regardless ot them being valid or not. For `expires` use a propper JSON format (`2012-04-23T18:25:43.511Z`) and mind UTC difference.(-3)
 
 ## Example
 
