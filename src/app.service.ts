@@ -24,6 +24,10 @@ export class AppService {
     return DatabaseService.getTargetLink(id);
   }
 
+  modifyLinkStats(id: string) {
+    DatabaseService.modifyRedirectStats(id);
+  }
+
   getStats(id: string): LinkStatsDTO {
     return { redirected: DatabaseService.getLinkStats(id) };
   }

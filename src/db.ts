@@ -23,8 +23,10 @@ export class DatabaseService {
   }
 
   static getTargetLink(linkId: string) {
-    database[linkId].increaseRedirected();
     return database[linkId].target;
+  }
+  static modifyRedirectStats(linkId: string) {
+    database[linkId].increaseRedirected();
   }
 
   static getLinkStats(linkId: string) {
