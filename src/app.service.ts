@@ -3,6 +3,7 @@ import { CreateLinkDTO } from './dto/create-link.dto';
 import { Link } from './entities/link.entity';
 import { DatabaseService } from './db';
 import { LinkStatsDTO } from './dto/link-stats.dto';
+import { checkExpireDate } from './utils';
 
 @Injectable()
 export class AppService {
@@ -30,5 +31,14 @@ export class AppService {
 
   getStats(id: string): LinkStatsDTO {
     return { redirected: DatabaseService.getLinkStats(id) };
+  }
+
+  _getLink(id: string) {
+    return DatabaseService.getLink(id);
+  }
+
+  _checkExpireDate(id: string) {
+    const { expires } = DatabaseService.getLink(id);
+    return checkExpireDate(expires);
   }
 }

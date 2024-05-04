@@ -1,7 +1,7 @@
 import { Exclude, Expose } from 'class-transformer';
 import { CreateLinkDTO } from 'src/dto/create-link.dto';
 import { LinkResponseDTO } from 'src/dto/link-response.dto';
-import { shortLinkGenerator } from 'src/utils';
+import { checkExpireDate, shortLinkGenerator } from 'src/utils';
 
 @Exclude()
 export class Link {
@@ -9,7 +9,7 @@ export class Link {
   private _link: string;
   private _valid: boolean;
   private _id: string;
-  private _expires?: Date | null;
+  private _expires?: Date;
   private _redirected: number;
   private _password?: string;
 
@@ -21,6 +21,7 @@ export class Link {
     this._valid = true;
     this._redirected = 0;
     this._password = payload.password;
+    this._expires = payload.expires;
   }
   @Expose()
   public get link() {
@@ -52,7 +53,10 @@ export class Link {
   }
 
   public increaseRedirected() {
-    if (this.valid) {
+    if (
+      (this.expires && checkExpireDate(this.expires) && this.valid) ||
+      this.valid
+    ) {
       this._redirected = this._redirected + 1;
     }
   }

@@ -35,6 +35,19 @@ export class AppController {
   @Redirect('', 301)
   async redirectToTarget(@Param('id') id: string) {
     try {
+      const isExpired = this.appService._checkExpireDate(id);
+      if (isExpired) {
+        throw new HttpException(
+          {
+            status: HttpStatus.NOT_FOUND,
+            error: 'Expired link',
+          },
+          HttpStatus.NOT_FOUND,
+          {
+            cause: 'Expired',
+          },
+        );
+      }
       const redirectUrl = this.appService.redirect(id);
       const response = await this.httpService.axiosRef.get(redirectUrl);
       if (response.status >= 200 && response.status < 400) {

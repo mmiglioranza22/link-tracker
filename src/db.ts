@@ -36,4 +36,8 @@ export class DatabaseService {
   static getLinkStats(linkId: string) {
     return database[linkId].redirected;
   }
+
+  static getLink(linkId: string) {
+    return database[linkId];
+  }
 }

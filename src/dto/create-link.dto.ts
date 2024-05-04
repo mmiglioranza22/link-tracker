@@ -4,4 +4,5 @@ export class CreateLinkDTO {
   @IsNotEmpty()
   target: string;
   password?: string;
+  expires?: Date;
 }
