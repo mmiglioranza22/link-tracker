@@ -26,7 +26,7 @@ export class AppController {
     return this.appService.createLink(payload);
   }
 
-  @Get('/l/:id/stats')
+  @Get('/:id/stats')
   findLinkStats(@Param('id') id: string): LinkStatsDTO {
     return this.appService.getStats(id);
   }

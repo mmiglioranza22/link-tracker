@@ -24,6 +24,7 @@ $ npm run start:prod
 Postman API ([access the shared workspace](https://www.postman.com/orbital-module-astronomer-66959558/workspace/link-tracker/overview))
 
 Once you've installed and spinned up the application, you can use the Postman API to:
+
 - create links (with an optional password and expire date)
 - fetch them all
 - fetch them individually (if you copy and paste them in the browser directly or click on the `target` link, you will be redirected)
@@ -47,9 +48,9 @@ Links can be created with a Date for them to expire in the `expires` request bod
 
 ![Fetching all links](/public/GET-all-links.png)
 
-### GET - /l/:id/stats
+### GET - /:id/stats
 
-![Fetching a specific link stats](/public/GET-link-stats.png)
+![Fetching a specific link stats](/public/GET-stats.png)
 
 ### PUT - /l/:id
 
