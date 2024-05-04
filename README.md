@@ -27,11 +27,16 @@ Once you've installed and spinned up the application, you can use the Postman AP
 
 All data is persisted in memory, so killing the application will make it start with no existing links.
 
+Links can be created with a `password` in the request body that will be attached as a query param for the redirected target url.
+
+Links can be created with a Date for them to expire in the `expires` request body prop. Expired links will not redirect to their target url, nor modify their stats, regardless or not them being valid. For `expires` use a propper JSON format (`2012-04-23T18:25:43.511Z`) and mind UTC difference.(-3)
+
 ## Example
 
 ### POST - /create
 
 ![Link creation](/public/POST.png)
+![Link creation with expire](/public/POST-expires.png)
 
 ### GET - /
 
@@ -44,3 +49,7 @@ All data is persisted in memory, so killing the application will make it start w
 ### PUT - /l/:id
 
 ![Modifying a links validation](/public/PUT.png)
+
+### Errors
+
+![Invalid link](/public/ERROR.png)
