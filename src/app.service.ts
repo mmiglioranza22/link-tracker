@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateLinkDTO } from './dto/create-link.dto';
 import { Link } from './entities/link.entity';
 import { DatabaseService } from './db';
+import { LinkStatsDTO } from './dto/link-stats.dto';
 
 @Injectable()
 export class AppService {
@@ -21,5 +22,9 @@ export class AppService {
 
   redirect(id: string) {
     return DatabaseService.getTargetLink(id);
+  }
+
+  getStats(id: string): LinkStatsDTO {
+    return { redirected: DatabaseService.getLinkStats(id) };
   }
 }

@@ -10,13 +10,15 @@ export class Link {
   private _valid: boolean;
   private _id: string;
   private _expires?: Date | null;
-  private _redirected?: number;
+  private _redirected: number;
 
   constructor(payload: CreateLinkDTO) {
-    this._id = shortLinkGenerator();
+    const linkId = shortLinkGenerator();
+    this._id = linkId;
     this._target = payload.target;
-    this._link = 'http://localhost:8080/l/' + shortLinkGenerator();
+    this._link = 'http://localhost:8080/l/' + linkId;
     this._valid = true;
+    this._redirected = 0;
   }
   @Expose()
   public get link() {

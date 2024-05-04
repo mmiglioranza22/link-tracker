@@ -9,12 +9,12 @@ const database: Dictionary = {};
 // TODO validation to see if link exists
 export class DatabaseService {
   static getLinks() {
-    return Object.entries(database);
+    return Object.values(database);
   }
 
   static addNewLink(link: Link) {
     database[link.id] = link;
-    return database[link.id];
+    return { el: database[link.id], database };
   }
 
   static modifyLinkValidation(linkId: string) {
