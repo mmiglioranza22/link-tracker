@@ -23,7 +23,12 @@ $ npm run start:prod
 
 Postman API ([access the shared workspace](https://www.postman.com/orbital-module-astronomer-66959558/workspace/link-tracker/overview))
 
-Once you've installed and spinned up the application, you can use the Postman API to create links, fetch them all, fetch them individually (if you copy and paste them in the browser directly or click on the `target` link, you will be redirected), check their stats (times they've been clicked) and modify their validation (if a link is invalidated, its stats will not change unless it is validated again).
+Once you've installed and spinned up the application, you can use the Postman API to:
+- create links (with an optional password and expire date)
+- fetch them all
+- fetch them individually (if you copy and paste them in the browser directly or click on the `target` link, you will be redirected)
+- check their stats (times they've been clicked)
+- modify their validation (if a link is invalidated, its stats will not change unless it is validated again).
 
 All data is persisted in memory, so killing the application will make it start with no existing links.
 
